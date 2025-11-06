@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "name": "crypto-dashboard-frontend",
+      "rootDirectory": "frontend"
+    },
+    {
+      "name": "crypto-dashboard-backend",
+      "rootDirectory": "backend"
+    }
+  ]
+}
+
