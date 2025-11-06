@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Spin, Empty, Table, Typography, Tag, Button, Space } from "antd";
+import { Card, Spin, Empty, Table, Typography, Tag, Button } from "antd";
 import { StarFilled, ReloadOutlined, ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import { getFavorites, removeFavorite, type Coin } from "../services/api";

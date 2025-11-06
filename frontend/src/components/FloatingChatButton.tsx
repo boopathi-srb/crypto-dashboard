@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Drawer, Badge } from "antd";
+import { Button, Drawer } from "antd";
 import { RobotOutlined, CloseOutlined } from "@ant-design/icons";
 import ChatPanel from "./ChatPanel";
 

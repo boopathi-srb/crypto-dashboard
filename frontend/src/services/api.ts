@@ -44,7 +44,7 @@ export interface CoinHistory {
 export interface ChatResponse {
   success: boolean;
   answer: string;
-  data?: any;
+  data?: unknown;
 }
 
 export interface CoinsResponse {
@@ -121,18 +121,22 @@ export async function getCoins(
   filters?: CoinFilters
 ): Promise<CoinsWithPagination> {
   try {
-    const params: any = {};
+    const params: Record<string, unknown> = {};
     if (filters?.page) params.page = filters.page;
     if (filters?.pageSize) params.pageSize = filters.pageSize;
     if (filters?.search) params.search = filters.search;
     if (filters?.minPrice !== undefined) params.minPrice = filters.minPrice;
     if (filters?.maxPrice !== undefined) params.maxPrice = filters.maxPrice;
-    if (filters?.minMarketCap !== undefined) params.minMarketCap = filters.minMarketCap;
-    if (filters?.maxMarketCap !== undefined) params.maxMarketCap = filters.maxMarketCap;
+    if (filters?.minMarketCap !== undefined)
+      params.minMarketCap = filters.minMarketCap;
+    if (filters?.maxMarketCap !== undefined)
+      params.maxMarketCap = filters.maxMarketCap;
     if (filters?.sortBy) params.sortBy = filters.sortBy;
     if (filters?.sortOrder) params.sortOrder = filters.sortOrder;
 
-    const response = await apiClient.get<CoinsResponse>("/api/coins", { params });
+    const response = await apiClient.get<CoinsResponse>("/api/coins", {
+      params,
+    });
     return {
       data: response.data.data,
       pagination: response.data.pagination || {
@@ -156,16 +160,20 @@ export async function getTopCoins(
   filters?: Omit<CoinFilters, "page" | "pageSize">
 ): Promise<Coin[]> {
   try {
-    const params: any = { top: limit };
+    const params: Record<string, unknown> = { top: limit };
     if (filters?.search) params.search = filters.search;
     if (filters?.minPrice !== undefined) params.minPrice = filters.minPrice;
     if (filters?.maxPrice !== undefined) params.maxPrice = filters.maxPrice;
-    if (filters?.minMarketCap !== undefined) params.minMarketCap = filters.minMarketCap;
-    if (filters?.maxMarketCap !== undefined) params.maxMarketCap = filters.maxMarketCap;
+    if (filters?.minMarketCap !== undefined)
+      params.minMarketCap = filters.minMarketCap;
+    if (filters?.maxMarketCap !== undefined)
+      params.maxMarketCap = filters.maxMarketCap;
     if (filters?.sortBy) params.sortBy = filters.sortBy;
     if (filters?.sortOrder) params.sortOrder = filters.sortOrder;
 
-    const response = await apiClient.get<CoinsResponse>("/api/coins", { params });
+    const response = await apiClient.get<CoinsResponse>("/api/coins", {
+      params,
+    });
     return response.data.data;
   } catch (error) {
     console.error("Error fetching top coins:", error);
@@ -260,9 +268,9 @@ export async function removeFavorite(coinId: string): Promise<void> {
 }
 
 export async function checkFavorite(coinId: string): Promise<boolean> {
-  const response = await apiClient.get<{ success: boolean; isFavorite: boolean }>(
-    `/api/favorites/${coinId}/check`
-  );
+  const response = await apiClient.get<{
+    success: boolean;
+    isFavorite: boolean;
+  }>(`/api/favorites/${coinId}/check`);
   return response.data.isFavorite;
 }
-
