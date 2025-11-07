@@ -85,7 +85,7 @@ A full-stack cryptocurrency dashboard application that displays real-time crypto
 
 4. **Run database migrations**:
    ```bash
-   npx drizzle-kit push:pg
+   npx drizzle-kit push
    ```
 
 5. **Seed the database**:
