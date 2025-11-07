@@ -245,7 +245,7 @@ npm run db:seed
 ```
 
 This script will:
-- Fetch the top 10 cryptocurrencies from CoinGecko
+- Fetch the top 50 cryptocurrencies from CoinGecko
 - Store/update coin data in the database
 - Fetch 30-day historical price data for each coin
 - Store historical data points in the database
@@ -461,40 +461,13 @@ Authorization: Bearer <token>
 }
 ```
 
-## ⚠️ Assumptions & Limitations
-
-### Assumptions
-1. **CoinGecko API Availability**: The application assumes CoinGecko API is accessible and responsive
-2. **Database Connection**: Assumes a valid PostgreSQL connection string is provided
-3. **Network Access**: Requires internet connection for CoinGecko API calls
-4. **Coin Names**: Users should use common coin names (Bitcoin, Ethereum, etc.) for best results
-
-### Limitations
-1. **Chat Parser**: The rule-based parser has limited understanding and may not handle complex or ambiguous queries
-2. **Coin Name Matching**: Coin name matching is case-insensitive but requires approximate spelling
-3. **Rate Limiting**: CoinGecko API has rate limits; the seeding script includes delays to respect these limits
-4. **Historical Data**: Historical data is limited to what's stored in the database (30 days by default)
-5. **Real-time Updates**: Data is not updated in real-time; users need to refresh or re-seed the database for latest data
-
-## 🔮 Future Enhancements (Bonus Features)
-
-- [x] User authentication and favorite coins
-- [ ] Real-time price updates via WebSockets
-- [ ] Advanced filtering and sorting on the dashboard
-- [ ] Caching layer to reduce API calls
-- [ ] Unit and integration tests
-- [ ] Deployment configuration (Vercel/Netlify)
-- [ ] More sophisticated chat assistant using NLP/ML
-- [ ] Price alerts and notifications
-- [ ] Portfolio tracking
 
 ## 📝 License
 
 ISC
 
 ## 👤 Author
-
-Built as a fullstack engineering assignment.
+[@boopathi-srb](https://github.com/boopathi-srb)
 
 ---
 
